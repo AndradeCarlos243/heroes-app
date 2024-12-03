@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export const HeroCard = ({ id, superhero, alter_ego, first_appearance, characters }) => {
-    const path = `/assets/heroes/${id}.jpg`;
+    const path = `/heroes/${id}.jpg`;
     const characterByHero = (<p className="card-text">{characters}</p>);
     return (
         <div className="col animate__animated animate__fadeInUpBig animate__faster my-2">

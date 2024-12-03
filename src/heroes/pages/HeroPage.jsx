@@ -9,7 +9,8 @@ export const HeroPage = () => {
     const navigate = useNavigate();
 
     const handleBack = () => {
-        navigate(-1);
+        const heroType = hero.publisher === 'DC Comics' ? '/dc' : '/marvel';
+        navigate(heroType);
     }
 
     if(!hero){
@@ -19,7 +20,7 @@ export const HeroPage = () => {
     return (
         <div className="row row-cols-1 row-cols-md-2 mt-5">
             <div className="col animate__animated animate__fadeInLeft animate__faster">
-                <img src={`/assets/heroes/${hero.id}.jpg`} alt={ hero.superhero } className="img-thumbnail" />
+                <img src={`/heroes/${hero.id}.jpg`} alt={ hero.superhero } className="img-thumbnail" />
             </div>
             <div className="col animate__animated animate__fadeInRight animate__faster">
                 <h3>{ hero.superhero }</h3>

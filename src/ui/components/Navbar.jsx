@@ -1,19 +1,21 @@
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth';
 
 export const Navbar = () => {
 
+    const { user = '', handleLoggoutContext } = useContext( AuthContext );
     const navigate = useNavigate();
     const handleLoggout = () => {
+        handleLoggoutContext();
         navigate('/login', { replace: true });
     }
-
-    let isLogged = true;
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
+        <nav className="navbar navbar-expand-sm bg-body-secondary p-2">
             
             <Link 
                 className="navbar-brand" 
-                to="/"
+                to="/marvel"
             >
                 Asociaciones
             </Link>
@@ -47,11 +49,11 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
                     <span className="nav-item nav-link text-primary">
-                        Hámster
+                        { user?.username }
                     </span>
                     <button className='nav-item nav-link btn btn-outline-danger'
                         onClick={ handleLoggout }>
-                        { isLogged ? 'Logout' : 'Login' }
+                        logout
                     </button>
                 </ul>
             </div>
